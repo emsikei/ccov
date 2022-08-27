@@ -1,0 +1,20 @@
+{
+  "name": "ccov",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo"
+  },
+  "bin": {
+    "ccov": "./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {}
+}
