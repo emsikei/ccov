@@ -45,10 +45,9 @@ const start = async () => {
     const amount = args.a;
     const base = args.b;
     const target = args.t.split(",");
-    const l = args.l;
 
     const { data } = await axios.get(
-      `https://api.exchangerate.host/latest?amount=${amount}&base=${base}&symbols=${target.join(
+      `https://api.exchangerate.host/latest?places=2&amount=${amount}&base=${base}&symbols=${target.join(
         ","
       )}`
     );

@@ -10,4 +10,5 @@ Run:
 - `ccov --help` - get usage info
 
 Credits:
-[Currency API](https://exchangerate.host);
+
+- [Currency API](https://exchangerate.host)
