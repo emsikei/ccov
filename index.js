@@ -1,18 +1,11 @@
 #!/usr/bin/env node
-
+require('dotenv').config();
 const args = require("yargs")
   .scriptName("ccov")
   .usage("Usage: $0 -a <amount> -b <currency> -t <currency>")
-  .usage(
-    "Usage: $0 -a <amount> -b <currency> -t <currency>,<currency>...<currency>"
-  )
   .example(
     "$0 -a 1 -b USD -t EUR",
-    "Returns the amount of dollars (1) in euro."
-  )
-  .example(
-    "$0 -a 1 -b USD -t EUR,GBP",
-    "Returns the amount of dollars (1) in euro & pounds."
+    "Returns the amount of dollars in euro."
   )
   .option("l", {
     alias: "list",
@@ -47,14 +40,10 @@ const start = async () => {
     const target = args.t.split(",");
 
     const { data } = await axios.get(
-      `https://api.exchangerate.host/latest?places=2&amount=${amount}&base=${base}&symbols=${target.join(
-        ","
-      )}`
+      `http://api.exchangerate.host/convert?access_key=${process.env.EXCHANGE_RATE_ACCESS_KEY}&amount=${amount}&from=${base}&to=${target}`
     );
 
-    for (const key in data.rates) {
-      console.log(`${amount} ${base} = ${data.rates[key]} ${key}`)
-    }
+    console.log(`${amount} ${base} = ${data.result.toFixed(2)} ${target}`)
   } else {
     console.log('Amount, base currency and target currency list are required');
   }
